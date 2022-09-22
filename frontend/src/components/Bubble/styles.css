@@ -1,0 +1,132 @@
+:root {
+    --bubble-size: 180px;
+    --bubble-color: #d9f9ff;
+    --bubble-children-height: 100px;
+    --bubble-child-size: 120px;
+}
+
+@keyframes bubble {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--bubble-color);
+    background-color: #fff;
+    width: var(--bubble-size);
+    height: var(--bubble-size);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    animation: bubble 0.2s ease;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.bubble:hover {
+    border-color: rgb(222, 222, 222);
+    background-color: rgb(229, 229, 229);
+    width: calc(var(--bubble-size) * 2);
+    height: calc(var(--bubble-size) * 2);
+    z-index: 1;
+}
+
+.bubble.predictions:hover {
+    width: calc(var(--bubble-size) * 2.3);
+    height: calc(var(--bubble-size) * 2.3);
+}
+
+.bubble-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.bubble-header h1 {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.bubble-header p { 
+    font-size: 0.8em;
+    text-wrap: normal;
+    width: 80%;
+    margin: 10px 0 0 0;
+}
+
+.bubble-children {
+    display: flex;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 80%;
+    max-height: var(--bubble-children-height);
+    justify-content: center;
+    display: none;
+}
+
+.bubble:hover .bubble-children {
+    display: flex;
+}
+
+.bubble-children.no-children {
+    background-color: #ccc;
+}
+
+.bubble-child {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #888;
+    border-radius: 50%;
+    max-width: var(--bubble-child-size);
+    height: var(--bubble-child-size);
+    text-align: center;
+    overflow: hidden;
+    margin: 2px;
+}
+
+.bubble-child h3 {
+    font-size: 0.8em;
+}
+
+.bubble.hasPredictions {
+    border-color: #ffc9c9;
+    cursor: default;
+}
+
+.bubble.hasPredictions:hover {
+    border-color: rgb(222, 222, 222);
+}
+
+.bubble-predictions {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.bubble:hover .bubble-predictions {
+    padding-left: 30px;
+    list-style-type: decimal;
+}
+
+.bubble-predictions :not(li:first-child) {
+    display: none;
+}
+
+.bubble:hover .bubble-predictions :not(li:first-child) {
+    display: list-item;
+}
