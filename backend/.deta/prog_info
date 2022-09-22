@@ -1,0 +1,1 @@
+{"id":"6fb41372-95bf-4d49-b163-96a44d5bfebc","space":31516,"runtime":"python3.9","name":"backend","path":"ddfmei","project":"b0mash7g","account":"144798365827","region":"us-west-1","deps":["flask","pandas","psycopg2-binary","flask_cors"],"envs":null,"public":true,"log_level":"debug","cron":""}
